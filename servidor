@@ -17,6 +17,9 @@ NICKS =[]
 #conexoes atualmente sendo utilizadas
 CONNECTIONS =[]
 
+# Servidor envia msg
+def enviar(conexao, msg):
+    conexao.enviar((msg + '\r\n').encode('utf-8'))
 
 def liberar_nick(conexao):
     if conexao.nick in NICKS:
@@ -40,7 +43,7 @@ def nick(conexao, novo_nick):
 
     #verificacao do nick
     if not validar_nome(novo_nick.encode("utf-8")):
-        print(":server 432 ", conexao.nick, novo_nick, " :Erroneous nickname")
+        enviar(conexao, f":server 432 {conexao.nick} {novo_nick} :Erroneous nickname")
         return
 
     #verificacao se ja existe
@@ -58,9 +61,8 @@ def nick(conexao, novo_nick):
     conexao.nick = novo_nick       # atualiza o estado da conexão
 
 #funcao handler para PING
-def ping(payload):
-    print(":server PONG server :",payload )
-    return
+def ping(conexao, payload):
+    enviar(conexao, f":server PONG server :{payload}")
 
 #funcao handler para PRIVMSG
 def privmsg(receiver,msg):
@@ -84,10 +86,9 @@ def message_protocol(conexao,command, rest):
     if esperado is None or len(rest) < esperado:
         return stupid_user()
 
-
     cases = {
         "NICK": lambda: nick(conexao,rest[0]),
-        "PING": lambda: ping(rest[0]),
+        "PING": lambda: ping(conexao,rest[0]),
         "PRIVMSG": lambda: privmsg(rest[0],rest[1]),
         "JOIN": lambda: join(rest[0]),
         "PART": lambda: part(rest[0]),
@@ -112,8 +113,21 @@ def dados_recebidos(conexao, dados):
     if dados == b'':
         return sair(conexao)
 
+    # Adiciona as mensagens enviadas no buffer
+    # Se vier quebrado, quando chegar '\r\n', a msg vai estar pronta
+    conexao.dados_residuais += dados
+
+    # "linha 1\r\nlinha 2\r\nlinha 3\r\n" -> 3 linhas prontas
+    # split('\r\n', 1) -> linha_pronta == "linha 1" e 
+    # conexao.dados_residuais == "linha 2\r\nlinha 3\r\n"
+    # Repete o processo
+    while b'\r\n' in conexao.dados_residuais:
+        linha_pronta, conexao.dados_residuais = conexao.dados_residuais.split(b'\r\n', 1)
+        processar_linha(conexao, linha_pronta)
+
+def processar_linha(conexao, linha):
     #strip para tirar o \r\n no final do ultimo argumento
-    string_data = sanitize_string_data(dados)
+    string_data = sanitize_string_data(linha)
     
     #divide a string em no máximo 3 partes, permitindo até 3 argumentos em 1 comando
     words = string_data.split(maxsplit=2)
@@ -130,13 +144,21 @@ def dados_recebidos(conexao, dados):
 def conexao_aceita(conexao):
     print(conexao, 'nova conexão')
 
+    # Novos atributos para o objeto conexao
+    # O atributo 'dados_residuais' vai armazenar as mensagens enviadas em uma conexão
+    # (podem vir quebradas, ou não, e vão sendo armazenadas nele)
     conexao.nick = '*'
+    conexao.dados_residuais = b''
 
     conexao.registrar_recebedor(dados_recebidos)
     CONNECTIONS.append(conexao)
     print(CONNECTIONS)
 
-
+# Gambiarra p/ teste funcionar no meu pc.
+# Aparentemente no python 3.14 não pode chamar asyncio.get_event_loop()
+# Se não tiver um event loop criado
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 servidor = Servidor(6667)
 servidor.registrar_monitor_de_conexoes_aceitas(conexao_aceita)
