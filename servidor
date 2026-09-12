@@ -11,7 +11,12 @@ ARGS_ESPERADOS = {
     "PART": 1,
 }
 
+#nicks atualmente em uso
 NICKS =[]
+
+#conexoes atualmente sendo utilizadas
+CONNECTIONS =[]
+
 
 def liberar_nick(conexao):
     if conexao.nick in NICKS:
@@ -44,8 +49,9 @@ def nick(conexao, novo_nick):
         return
 
     #logs do server
-    print(":server 001 ", novo_nick, " :Welcome")
-    print(":server 422 ", novo_nick, " :MOTD File is missing")
+    if(conexao.nick != '*'):
+        print(":server 001 ", novo_nick, " :Welcome")
+        print(":server 422 ", novo_nick, " :MOTD File is missing")
 
     liberar_nick(conexao)          # libera o nick antigo
     NICKS.append(novo_nick)        # reserva o nick novo
@@ -53,7 +59,8 @@ def nick(conexao, novo_nick):
 
 #funcao handler para PING
 def ping(payload):
-    print(payload)
+    print(":server PONG server :",payload )
+    return
 
 #funcao handler para PRIVMSG
 def privmsg(receiver,msg):
@@ -94,11 +101,12 @@ def message_protocol(conexao,command, rest):
 def sair(conexao):
     print(conexao, 'conexão fechada')
     
-    if conexao.nick != b'*':
+    if conexao.nick != '*':
         liberar_nick(conexao)
-
+    
+    CONNECTIONS.remove(conexao)
+    print(CONNECTIONS)
     conexao.fechar()
-
 
 def dados_recebidos(conexao, dados):
     if dados == b'':
@@ -122,9 +130,12 @@ def dados_recebidos(conexao, dados):
 def conexao_aceita(conexao):
     print(conexao, 'nova conexão')
 
-    conexao.nick = b'*'
+    conexao.nick = '*'
 
     conexao.registrar_recebedor(dados_recebidos)
+    CONNECTIONS.append(conexao)
+    print(CONNECTIONS)
+
 
 
 servidor = Servidor(6667)
