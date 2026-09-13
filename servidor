@@ -11,8 +11,8 @@ ARGS_ESPERADOS = {
     "PART": 1,
 }
 
-#nicks atualmente em uso
-NICKS =[]
+#nicks atualmente em uso (mapeado para a conexão)
+NICKS = {}
 
 #conexoes atualmente sendo utilizadas
 CONNECTIONS =[]
@@ -22,8 +22,8 @@ def enviar(conexao, msg):
     conexao.enviar((msg + '\r\n').encode('utf-8'))
 
 def liberar_nick(conexao):
-    if conexao.nick in NICKS:
-        NICKS.remove(conexao.nick)
+    if conexao.nick != '*':
+        NICKS.pop(conexao.nick, None)
 
 def sanitize_string_data(dados):
     return dados.decode("utf-8").strip()
@@ -47,19 +47,21 @@ def nick(conexao, novo_nick):
 
     #verificacao se ja existe
     if novo_nick.lower() in NICKS:
-        enviar(conexao, f":server 432 {conexao.nick} {novo_nick} :Nickname is already in use")
+        enviar(conexao, f":server 433 {conexao.nick} {novo_nick} :Nickname is already in use")
         return
 
     nick_antigo = conexao.nick
 
     if nick_antigo != '*':
-        liberar_nick(conexao)  # libera o nick antigo
+        enviar(conexao, f":{nick_antigo} NICK {novo_nick}")
+        liberar_nick(conexao)      # libera o nick antigo
+    else:
+        enviar(conexao, f":server 001 {novo_nick} :Welcome")
+        enviar(conexao, f":server 422 {novo_nick} :MOTD File is missing")
  
-    NICKS.append(novo_nick)        # reserva o nick novo
+    NICKS[novo_nick] = conexao     # reserva o nick novo
     conexao.nick = novo_nick       # atualiza o estado da conexão
 
-    enviar(conexao, f":server 001 {novo_nick} :Welcome")
-    enviar(conexao, f":server 422 {novo_nick} :MOTD File is missing")
 
 #funcao handler para PING
 def ping(conexao, payload):
