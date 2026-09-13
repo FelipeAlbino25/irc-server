@@ -1,0 +1,906 @@
+Executando test_ping (Passo 1)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+OK
+Executando test_ping_fragmented (Passo 2)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.287s
+
+OK
+Executando test_nick_validation (Passo 3)
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.103s
+
+OK
+Executando test_nick_duplicate (Passo 4)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.147s
+
+OK
+Executando test_privmsg (Passo 5)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.189s
+
+OK
+Executando test_join (Passo 6)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.232s
+
+OK
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Executando test_part (Passo 7)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.277s
+
+OK
+Executando test_quit (Passo 8)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.148s
+
+OK
+Executando test_names (Passo 9)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.147s
+
+OK
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in callback Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22
+handle: <Handle Conexao.registrar_recebedor.<locals>.<lambda>() at /home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py:22>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 22, in <lambda>
+    asyncio.get_event_loop().add_reader(self.s, lambda: callback(self, self.s.recv(8192)))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 275, in dados_recebidos
+    return sair(conexao)
+           ^^^^^^^^^^^^^
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 261, in sair
+    enviar_linha(outra_conexao, f":{conexao.nick} QUIT :Connection closed")
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/./servidor", line 47, in enviar_linha
+    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  File "/home/felipe-albino/projetos/materias/2026_2/redes/redes-p1/tcp.py", line 25, in enviar
+    self.s.sendall(dados)
+BrokenPipeError: [Errno 32] Broken pipe
+Executando test_disconnect (Passo 10)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.149s
+
+OK
