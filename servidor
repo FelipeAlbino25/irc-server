@@ -13,7 +13,6 @@ ARGS_ESPERADOS = {
 }
 
 # Mapeia apelido (em minúsculas) -> conexão correspondente.
-
 NICKS = {}
 
 # Mapeia nome de canal (em minúsculas) -> dicionário com:
@@ -26,45 +25,36 @@ CONEXOES = []
 
 
 def sanitize_string_data(dados):
-    """Decodifica os bytes recebidos do socket para uma string."""
     return dados.decode("utf-8")
 
 
 def validar_nome(nome):
-    """Valida apelidos: deve começar com letra e conter só letras, números, _ e -."""
     return re.match(br'^[a-zA-Z][a-zA-Z0-9_-]*$', nome) is not None
 
 
 def validar_canal(nome):
-    """Valida nomes de canal: começa com '#' e o restante segue as regras de apelido."""
     return nome.startswith('#') and validar_nome(nome[1:].encode("utf-8"))
 
 
 def enviar_linha(conexao, linha):
-    """Envia uma linha de protocolo IRC, adicionando o '\\r\\n' de terminação."""
-    conexao.enviar((linha + '\r\n').encode("utf-8"))
+  
+    try:
+        conexao.enviar((linha + '\r\n').encode("utf-8"))
+    except OSError:
+        pass
 
 
-#handler para quando um cliente manda um comando mal formatado
 def stupid_user(conexao):
     print("Comando desconhecido ou mal formado recebido de", conexao)
 
 
-#retorna o conjunto de conexões que compartilham pelo menos um canal com ela
 def obter_conexoes_em_comum(conexao):
 
     conexoes = set()
-    
-    #pega todos os canais do cliente
     for canal_lower in conexao.canais:
-
-        #se o canal não existir mais, pulamos ele
         canal = CANAIS.get(canal_lower)
         if canal is None:
             continue
-
-    #para qualquer outro membro que participava dos canais do usuário
-    #retornamos o set da conexões ()
         for outra_conexao in canal["membros"].values():
             conexoes.add(outra_conexao)
     conexoes.discard(conexao)
@@ -89,7 +79,9 @@ def sair_dos_canais(conexao):
 
 
 # Handlers de comandos do protocolo
+
 def nick(conexao, novo_nick):
+    """Handler do comando NICK: define o apelido inicial ou troca o apelido atual."""
     apelido_atual = conexao.nick
     novo_nick_lower = novo_nick.lower()
 
@@ -184,6 +176,7 @@ def join(conexao, canal_nome):
 
 
 def part(conexao, canal_nome):
+    """Handler do comando PART: tira o usuário de um canal."""
     canal_lower = canal_nome.lower()
     canal = CANAIS.get(canal_lower)
     if canal is None or conexao.nick.lower() not in canal["membros"]:
@@ -199,9 +192,12 @@ def part(conexao, canal_nome):
         del CANAIS[canal_lower]
 
 
+# ---------------------------------------------------------------------------
 # Roteamento de mensagens recebidas e ciclo de vida da conexão
+# ---------------------------------------------------------------------------
 
 def message_protocol(conexao, command, rest):
+    """Confere os argumentos do comando recebido e despacha para o handler certo."""
     esperado = ARGS_ESPERADOS.get(command)
 
     if esperado is None or len(rest) < esperado:
@@ -215,10 +211,13 @@ def message_protocol(conexao, command, rest):
         "PART": lambda: part(conexao, rest[0]),
     }
 
+    # cases.get(command, ...) retorna a função associada, ou um handler de
+    # comando desconhecido caso a chave não exista
     return cases.get(command, lambda: stupid_user(conexao))()
 
 
 def processar_linha(conexao, linha):
+    """Interpreta uma única linha de protocolo (já sem o '\\r\\n') e a despacha."""
     if not linha:
         return
 
@@ -237,6 +236,7 @@ def processar_linha(conexao, linha):
 
 
 def sair(conexao):
+    """Trata o fechamento de uma conexão: avisa outros usuários e limpa o estado."""
     print(conexao, 'conexão fechada')
 
     if conexao.nick != '*':
@@ -255,6 +255,7 @@ def sair(conexao):
 
 
 def dados_recebidos(conexao, dados):
+    """Callback chamado sempre que novos bytes chegam pela conexão."""
     if dados == b'':
         return sair(conexao)
 
@@ -274,9 +275,11 @@ def dados_recebidos(conexao, dados):
 
 
 def conexao_aceita(conexao):
+    """Callback chamado quando uma nova conexão TCP é estabelecida."""
     print(conexao, 'nova conexão')
 
-  
+    # Estado inicial: ainda não registrada (nick == '*'), sem canais e sem
+    # dados residuais de leituras anteriores
     conexao.nick = '*'
     conexao.canais = set()
     conexao.residual = ''
