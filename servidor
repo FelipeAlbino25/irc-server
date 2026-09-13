@@ -23,7 +23,7 @@ def enviar(conexao, msg):
 
 def liberar_nick(conexao):
     if conexao.nick != '*':
-        NICKS.pop(conexao.nick, None)
+        NICKS.pop(conexao.nick.lower(), None)
 
 def sanitize_string_data(dados):
     return dados.decode("utf-8").strip()
@@ -59,7 +59,7 @@ def nick(conexao, novo_nick):
         enviar(conexao, f":server 001 {novo_nick} :Welcome")
         enviar(conexao, f":server 422 {novo_nick} :MOTD File is missing")
  
-    NICKS[novo_nick] = conexao     # reserva o nick novo
+    NICKS[novo_nick.lower()] = conexao     # reserva o nick novo
     conexao.nick = novo_nick       # atualiza o estado da conexão
 
 
@@ -68,8 +68,21 @@ def ping(conexao, payload):
     enviar(conexao, f":server PONG server :{payload}")
 
 #funcao handler para PRIVMSG
-def privmsg(receiver,msg):
-    print(receiver,msg)
+def privmsg(conexao, destinatario, conteudo):
+    if conteudo.startswith(':'):
+        conteudo = conteudo[1:]
+
+    msg = f":{conexao.nick} PRIVMSG {destinatario} :{conteudo}"
+
+    if destinatario.startswith('#'):
+        return
+
+    destino = NICKS.get(destinatario.lower())
+    if destino is None:
+        return
+    
+    enviar(destino, msg)
+    
 
 #funcao handler para JOIN
 def join(channel):
@@ -82,7 +95,7 @@ def part(channel):
 # Separa os tipos de mensagem e direciona para cada handler
 # command: tipo de comando nick,ping ...
 # rest: string[]
-def message_protocol(conexao,command, rest):
+def message_protocol(conexao, command, rest):
 
     esperado = ARGS_ESPERADOS.get(command)
 
@@ -90,9 +103,9 @@ def message_protocol(conexao,command, rest):
         return stupid_user()
 
     cases = {
-        "NICK": lambda: nick(conexao,rest[0]),
-        "PING": lambda: ping(conexao,rest[0]),
-        "PRIVMSG": lambda: privmsg(rest[0],rest[1]),
+        "NICK": lambda: nick(conexao, rest[0]),
+        "PING": lambda: ping(conexao, rest[0]),
+        "PRIVMSG": lambda: privmsg(conexao, rest[0], rest[1]),
         "JOIN": lambda: join(rest[0]),
         "PART": lambda: part(rest[0]),
     }
@@ -141,7 +154,7 @@ def processar_linha(conexao, linha):
     command = words[0]
     rest = words[1:]
 
-    message_protocol(conexao,command,rest)
+    message_protocol(conexao, command, rest)
 
 
 def conexao_aceita(conexao):
