@@ -14,11 +14,15 @@ ARGS_ESPERADOS = {
 #nicks atualmente em uso (mapeado para a conexão)
 NICKS = {}
 
+# Chave: canal.lower() -> valor: lista de nicks nessse canal
+CANAIS = {}
+
 #conexoes atualmente sendo utilizadas
-CONNECTIONS =[]
+CONNECTIONS = []
 
 # Servidor envia msg
 def enviar(conexao, msg):
+    # Str -> bytes
     conexao.enviar((msg + '\r\n').encode('utf-8'))
 
 def liberar_nick(conexao):
@@ -62,31 +66,57 @@ def nick(conexao, novo_nick):
     NICKS[novo_nick.lower()] = conexao     # reserva o nick novo
     conexao.nick = novo_nick       # atualiza o estado da conexão
 
-
 #funcao handler para PING
 def ping(conexao, payload):
     enviar(conexao, f":server PONG server :{payload}")
 
 #funcao handler para PRIVMSG
 def privmsg(conexao, destinatario, conteudo):
-    if conteudo.startswith(':'):
+    if conteudo.startswith(":"):
         conteudo = conteudo[1:]
 
     msg = f":{conexao.nick} PRIVMSG {destinatario} :{conteudo}"
 
-    if destinatario.startswith('#'):
+    # Se destinatario for um canal
+    if destinatario.startswith("#"):
+        nick_membros_canal = CANAIS.get(destinatario.lower())
+        if nick_membros_canal is None:
+            return
+        for nick_membro in nick_membros_canal:
+            # Não enviar msg a si mesmo
+            if nick_membro == conexao.nick.lower():
+                continue
+            conexao_membro = NICKS.get(nick_membro)
+            if conexao_membro is not None:
+                enviar(conexao_membro, msg)
         return
-
+    
     destino = NICKS.get(destinatario.lower())
     if destino is None:
         return
     
     enviar(destino, msg)
-    
 
 #funcao handler para JOIN
-def join(channel):
-    print(channel)
+def join(conexao, canal):
+    # Verifica se é um canal e se o nome é válido 
+    if not canal.startswith("#") or not validar_nome(canal[1:].encode("utf-8")):
+        enviar(f":server 403 {canal} :No such channel")
+
+    # Adiciona chave canal.lower() em CANAIS, se canal.lower() não está lá
+    canal_lower = canal.lower()
+    if canal_lower not in CANAIS:
+        CANAIS[canal_lower] = []
+
+    # Adiciona o usuário na lista de nicks do canal
+    if conexao.nick.lower() not in CANAIS[canal_lower]:
+        CANAIS[canal_lower].append(conexao.nick.lower())
+
+    # Para cada membro do canal, envia quem entrou
+    for nick_membro in CANAIS[canal_lower]:
+        conexao_membro = NICKS.get(nick_membro)
+        if conexao_membro is not None:
+            enviar(conexao_membro, f":{conexao.nick} JOIN :{canal}")
 
 #funcao handler para PART
 def part(channel):
@@ -106,14 +136,13 @@ def message_protocol(conexao, command, rest):
         "NICK": lambda: nick(conexao, rest[0]),
         "PING": lambda: ping(conexao, rest[0]),
         "PRIVMSG": lambda: privmsg(conexao, rest[0], rest[1]),
-        "JOIN": lambda: join(rest[0]),
+        "JOIN": lambda: join(conexao, rest[0]),
         "PART": lambda: part(rest[0]),
     }
 
     # cases.get(command, stupid_user) retorna a função associada,
     # ou a função stupid_user se a chave não existir
     return cases.get(command, stupid_user)()
-
 
 def sair(conexao):
     print(conexao, 'conexão fechada')
@@ -143,8 +172,9 @@ def dados_recebidos(conexao, dados):
 
 def processar_linha(conexao, linha):
     #strip para tirar o \r\n no final do ultimo argumento
+    # Bytes -> string
     string_data = sanitize_string_data(linha)
-    
+
     #divide a string em no máximo 3 partes, permitindo até 3 argumentos em 1 comando
     words = string_data.split(maxsplit=2)
 
@@ -155,7 +185,6 @@ def processar_linha(conexao, linha):
     rest = words[1:]
 
     message_protocol(conexao, command, rest)
-
 
 def conexao_aceita(conexao):
     print(conexao, 'nova conexão')
