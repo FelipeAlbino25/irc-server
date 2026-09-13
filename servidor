@@ -23,7 +23,7 @@ CANAIS = {}
 # Lista de todas as conexões atualmente abertas (registradas ou não)
 CONEXOES = []
 
-
+# Str -> bytes
 def sanitize_string_data(dados):
     return dados.decode("utf-8")
 
@@ -35,26 +35,26 @@ def validar_nome(nome):
 def validar_canal(nome):
     return nome.startswith('#') and validar_nome(nome[1:].encode("utf-8"))
 
-
+# Envio de linha através da conexão
 def enviar_linha(conexao, linha):
-  
     try:
         conexao.enviar((linha + '\r\n').encode("utf-8"))
     except OSError:
         pass
 
-
+# Se o comando digitado for inválido
 def stupid_user(conexao):
     print("Comando desconhecido ou mal formado recebido de", conexao)
 
 
 def obter_conexoes_em_comum(conexao):
-
+    # Conexões dos usuários que estão em canais em comum  
     conexoes = set()
     for canal_lower in conexao.canais:
         canal = CANAIS.get(canal_lower)
         if canal is None:
             continue
+        # Itera sobre todas conexões dos membros de um canal
         for outra_conexao in canal["membros"].values():
             conexoes.add(outra_conexao)
     conexoes.discard(conexao)
@@ -63,6 +63,7 @@ def obter_conexoes_em_comum(conexao):
 
 def liberar_nick(conexao):
     nick_lower = conexao.nick.lower()
+    # Pega a conexão associada a nick_lower e remove ela, se existir
     if NICKS.get(nick_lower) is conexao:
         del NICKS[nick_lower]
 
@@ -72,13 +73,15 @@ def sair_dos_canais(conexao):
         canal = CANAIS.get(canal_lower)
         if canal is None:
             continue
+        # Remove usuário do dicionario de membros de cada canal
         canal["membros"].pop(conexao.nick.lower(), None)
         if not canal["membros"]:
             del CANAIS[canal_lower]
     conexao.canais.clear()
 
-
-# Handlers de comandos do protocolo
+# ---------------------------------------------------------------------------
+# HANDLERS DE COMANDOS DO PROTOCOLO
+# ---------------------------------------------------------------------------
 
 def nick(conexao, novo_nick):
     """Handler do comando NICK: define o apelido inicial ou troca o apelido atual."""
@@ -120,6 +123,7 @@ def ping(conexao, payload):
 
 
 def privmsg(conexao, destinatario, conteudo):
+    """Handler do comando PRIVMSG: envia mensagem privada a outros usuários."""
     mensagem = f":{conexao.nick} PRIVMSG {destinatario} :{conteudo}"
 
     if destinatario.startswith('#'):
@@ -139,6 +143,7 @@ def privmsg(conexao, destinatario, conteudo):
 
 
 def join(conexao, canal_nome):
+    """Handler do comando JOIN: usuário ingressa em um canal."""
     if not validar_canal(canal_nome):
         enviar_linha(conexao, f":server 403 {canal_nome} :No such channel")
         return
@@ -169,6 +174,9 @@ def join(conexao, canal_nome):
         else:
             linha_atual = candidata
 
+    # Envia a última linha montada, exceto se ela ficou vazia (ou seja,
+    # igual ao prefixo, o que só aconteceria se o canal não tivesse
+    # membros).
     if linha_atual != prefixo:
         enviar_linha(conexao, linha_atual)
 
@@ -176,12 +184,15 @@ def join(conexao, canal_nome):
 
 
 def part(conexao, canal_nome):
-    """Handler do comando PART: tira o usuário de um canal."""
+    """Handler do comando PART: tira o usuário de um canal específico."""
     canal_lower = canal_nome.lower()
     canal = CANAIS.get(canal_lower)
+    # Se o canal não existir ou o usuário não estiver nele, a solicitação
+    # é silenciosamente ignorada
     if canal is None or conexao.nick.lower() not in canal["membros"]:
         return  # usuário não estava no canal (ou canal nem existe): ignoramos
 
+    # Todos membros do canal recebem aviso de PART
     mensagem = f":{conexao.nick} PART {canal['nome']}"
     for membro_conexao in canal["membros"].values():
         enviar_linha(membro_conexao, mensagem)
@@ -203,6 +214,8 @@ def message_protocol(conexao, command, rest):
     if esperado is None or len(rest) < esperado:
         return stupid_user(conexao)
 
+    # Mapeia cada comando conhecido para uma lambda que chama o handler correto 
+    # já com os argumentos na ordem certa. 
     cases = {
         "NICK": lambda: nick(conexao, rest[0]),
         "PING": lambda: ping(conexao, rest[0]),
@@ -284,6 +297,8 @@ def conexao_aceita(conexao):
     conexao.canais = set()
     conexao.residual = ''
 
+    # Callback de recebimento de dados
+    # e adiciona a conexão à lista global de conexões abertas
     conexao.registrar_recebedor(dados_recebidos)
     CONEXOES.append(conexao)
 
